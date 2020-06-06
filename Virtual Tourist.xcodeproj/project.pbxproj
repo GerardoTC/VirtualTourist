@@ -15,6 +15,9 @@
 		373F3B882482CE71007C4536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 373F3B872482CE71007C4536 /* Assets.xcassets */; };
 		373F3B8B2482CE71007C4536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 373F3B892482CE71007C4536 /* LaunchScreen.storyboard */; };
 		374E53412489E1ED003E794A /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E53402489E1ED003E794A /* PhotosViewController.swift */; };
+		37B2ED65248BFA2400348C4D /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B2ED63248BFA2400348C4D /* PhotoViewCell.swift */; };
+		37B2ED66248BFA2400348C4D /* PhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B2ED64248BFA2400348C4D /* PhotoViewCell.xib */; };
+		37B2ED68248C036B00348C4D /* HorizontalGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B2ED67248C036B00348C4D /* HorizontalGradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		373F3B8A2482CE71007C4536 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		373F3B8C2482CE71007C4536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		374E53402489E1ED003E794A /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		37B2ED63248BFA2400348C4D /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		37B2ED64248BFA2400348C4D /* PhotoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewCell.xib; sourceTree = "<group>"; };
+		37B2ED67248C036B00348C4D /* HorizontalGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalGradient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +66,11 @@
 		373F3B7A2482CE6F007C4536 /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				37B2ED69248C1FCA00348C4D /* utils */,
+				37B2ED5E248BF46100348C4D /* Sections */,
 				374E53422489E954003E794A /* Network */,
 				373F3B7B2482CE6F007C4536 /* AppDelegate.swift */,
 				373F3B7D2482CE6F007C4536 /* SceneDelegate.swift */,
-				374E53402489E1ED003E794A /* PhotosViewController.swift */,
-				373F3B7F2482CE6F007C4536 /* MapViewController.swift */,
 				373F3B812482CE6F007C4536 /* Main.storyboard */,
 				373F3B872482CE71007C4536 /* Assets.xcassets */,
 				373F3B892482CE71007C4536 /* LaunchScreen.storyboard */,
@@ -79,6 +85,41 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		37B2ED5E248BF46100348C4D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				37B2ED60248BF48800348C4D /* Map */,
+				37B2ED5F248BF47D00348C4D /* Photos */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		37B2ED5F248BF47D00348C4D /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				374E53402489E1ED003E794A /* PhotosViewController.swift */,
+				37B2ED63248BFA2400348C4D /* PhotoViewCell.swift */,
+				37B2ED64248BFA2400348C4D /* PhotoViewCell.xib */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		37B2ED60248BF48800348C4D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				373F3B7F2482CE6F007C4536 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		37B2ED69248C1FCA00348C4D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				37B2ED67248C036B00348C4D /* HorizontalGradient.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +183,7 @@
 				373F3B8B2482CE71007C4536 /* LaunchScreen.storyboard in Resources */,
 				373F3B882482CE71007C4536 /* Assets.xcassets in Resources */,
 				373F3B832482CE6F007C4536 /* Main.storyboard in Resources */,
+				37B2ED66248BFA2400348C4D /* PhotoViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,10 +195,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				373F3B862482CE6F007C4536 /* Virtual_Tourist.xcdatamodeld in Sources */,
+				37B2ED68248C036B00348C4D /* HorizontalGradient.swift in Sources */,
 				373F3B802482CE6F007C4536 /* MapViewController.swift in Sources */,
 				373F3B7C2482CE6F007C4536 /* AppDelegate.swift in Sources */,
 				373F3B7E2482CE6F007C4536 /* SceneDelegate.swift in Sources */,
 				374E53412489E1ED003E794A /* PhotosViewController.swift in Sources */,
+				37B2ED65248BFA2400348C4D /* PhotoViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

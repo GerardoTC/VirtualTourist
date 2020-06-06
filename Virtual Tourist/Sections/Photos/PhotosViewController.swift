@@ -9,10 +9,9 @@
 import UIKit
 
 class PhotosViewController: UIViewController {
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("willappear")
-    }
+    
+    @IBOutlet weak var collection: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
