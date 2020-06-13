@@ -31,5 +31,3 @@ class HorizontalGradient: UIView {
     }
     
 }
-
-

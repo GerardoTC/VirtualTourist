@@ -10,9 +10,14 @@ import UIKit
 
 class PhotoViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var image: UIImageView! {didSet {
+        image.layer.cornerRadius = 16.0
+        image.contentMode = .scaleAspectFill
+        }}
+    @IBOutlet weak var text: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

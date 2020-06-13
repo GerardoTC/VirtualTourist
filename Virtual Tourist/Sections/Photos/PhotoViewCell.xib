@@ -9,21 +9,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoViewCell" customModule="Virtual_Tourist" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="303" height="213"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="gTV-IL-0wX" customClass="PhotoViewCell" customModule="Virtual_Tourist" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="303" height="310"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="303" height="213"/>
+                <rect key="frame" x="0.0" y="0.0" width="303" height="310"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jal-ig-6Nd">
-                        <rect key="frame" x="0.0" y="0.0" width="303" height="213"/>
+                        <rect key="frame" x="0.0" y="0.0" width="303" height="310"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BJr-Cq-yIU">
-                                <rect key="frame" x="0.0" y="0.0" width="303" height="213"/>
+                                <rect key="frame" x="0.0" y="0.0" width="303" height="310"/>
                             </imageView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2A1-cb-EGc" customClass="HorizontalGradient" customModule="Virtual_Tourist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="163" width="303" height="40"/>
+                                <rect key="frame" x="0.0" y="254" width="303" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-65-8DO">
                                         <rect key="frame" x="20" y="0.0" width="263" height="40"/>
@@ -47,13 +47,12 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="2A1-cb-EGc" secondAttribute="bottom" constant="10" id="5K8-hQ-Uve"/>
+                            <constraint firstAttribute="bottom" secondItem="2A1-cb-EGc" secondAttribute="bottom" constant="16" id="5K8-hQ-Uve"/>
                             <constraint firstItem="2A1-cb-EGc" firstAttribute="leading" secondItem="jal-ig-6Nd" secondAttribute="leading" id="A4b-aB-MKs"/>
                             <constraint firstAttribute="trailing" secondItem="BJr-Cq-yIU" secondAttribute="trailing" id="Czd-Dj-JHf"/>
                             <constraint firstAttribute="bottom" secondItem="BJr-Cq-yIU" secondAttribute="bottom" id="NpX-ii-EVU"/>
@@ -71,8 +70,12 @@
                 <constraint firstItem="jal-ig-6Nd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="W1S-ES-5DX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="303" height="213"/>
-            <point key="canvasLocation" x="-161.59420289855075" y="207.92410714285714"/>
+            <size key="customSize" width="303" height="310"/>
+            <connections>
+                <outlet property="image" destination="BJr-Cq-yIU" id="wBH-b7-RN8"/>
+                <outlet property="text" destination="UJw-65-8DO" id="3Wh-bP-PMZ"/>
+            </connections>
+            <point key="canvasLocation" x="-161.59420289855075" y="240.40178571428569"/>
         </collectionViewCell>
     </objects>
 </document>
