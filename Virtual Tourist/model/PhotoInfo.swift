@@ -8,7 +8,18 @@
 
 import Foundation
 
-struct PhotoInfo {
+struct PhotoInfo: Decodable {
     let text: String
-    let imageURL: String
+    let id: String
+    let sImageURL: String
+    let mImageURL: String
+    let lImageURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case text = "title"
+        case sImageURL = "url_s"
+        case mImageURL = "url_m"
+        case lImageURL = "url_l"
+        case id
+    }
 }
