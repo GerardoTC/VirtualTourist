@@ -22,8 +22,10 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapHeight.constant = self.view.frame.height
+        map.delegate = self
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addPin(longGesture:)))
+        map.addGestureRecognizer(longPressGesture)
     }
-    
     
     @IBAction func buttonBarPressed() {
         if showImages {
@@ -32,6 +34,13 @@ class MapViewController: UIViewController {
             hidePhotosVC()
         }
         showImages.toggle()
+    }
+    
+    @objc func addPin(longGesture: UILongPressGestureRecognizer) {
+        let pointPress = longGesture.location(in: map)
+        let cooordinate: CLLocationCoordinate2D = map.convert(pointPress, toCoordinateFrom: map)
+        let annotation = PinAnnotation(coordinate: cooordinate)
+        map.addAnnotation(annotation)
     }
     
     func showPhotosVC() {
@@ -64,3 +73,15 @@ class MapViewController: UIViewController {
     }
 }
 
+extension MapViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        hidePhotosVC()
+    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation as? PinAnnotation else {
+            return
+        }
+        showPhotosVC()
+    }
+}

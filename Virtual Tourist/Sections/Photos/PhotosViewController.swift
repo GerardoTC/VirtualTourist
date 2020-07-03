@@ -11,7 +11,7 @@ import UIKit
 class PhotosViewController: UIViewController {
     var items: [PhotoInfo] = [PhotoInfo]()
     @IBOutlet weak var collection: UICollectionView!
-    
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +20,12 @@ class PhotosViewController: UIViewController {
         collection.dataSource = self
         collection.register(UINib(nibName: "PhotoViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collection.isHidden = true
+        loading.isHidden = false
     }
     
 }

@@ -18,7 +18,7 @@ class PhotoDownloader {
         concurrentPhotoQueue.async {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 completion(data)
-            }
+            }.resume()
         }
     }
     
@@ -44,7 +44,9 @@ class PhotoDownloader {
                 dispatchGroup.leave()
             }
         }
-        dispatchGroup.wait()
-        completion(images)
+        dispatchGroup.notify(queue: .main) {
+            completion(images)
+        }
+        
     }
 }

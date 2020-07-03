@@ -34,7 +34,7 @@ class FlickrClient {
         }
     }
     
-    func fetchPhotos(perPage page: Int, lat: String, lon: String, completion: @escaping (Result<FetchPhotosResponse,FetchPhotosError>) -> Void) {
+   static func fetchPhotos(perPage page: Int, lat: String, lon: String, completion: @escaping (Result<FetchPhotosResponse,FetchPhotosError>) -> Void) {
         let url = FlickrClient.Endpoints.photoSearch(lat: lat, long: lon, page: page).url
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
@@ -42,11 +42,11 @@ class FlickrClient {
                 return
             }
             do {
-                let fetchResponse = try JSONDecoder().decode(FetchPhotosResponse.self, from: data)
-                completion(.success(fetchResponse))
+                let fetchResponse = try JSONDecoder().decode(PhotosResponse.self, from: data)
+                completion(.success(fetchResponse.photos))
             } catch {
                 completion(.failure(.failedFetchData))
             }
-        }
+        }.resume()
     }
 }

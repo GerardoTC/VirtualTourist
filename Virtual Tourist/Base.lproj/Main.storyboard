@@ -68,6 +68,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="P4W-v4-dgA">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yYg-7H-bAg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="792"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,6 +100,8 @@
                             <constraint firstItem="j1W-Pn-sk4" firstAttribute="trailing" secondItem="9h4-fg-vc3" secondAttribute="trailing" constant="-20" id="4vw-6h-GP1"/>
                             <constraint firstItem="j1W-Pn-sk4" firstAttribute="top" secondItem="yYg-7H-bAg" secondAttribute="bottom" id="9on-7r-2de"/>
                             <constraint firstItem="yYg-7H-bAg" firstAttribute="trailing" secondItem="9h4-fg-vc3" secondAttribute="trailing" id="VEs-2U-1pD"/>
+                            <constraint firstItem="P4W-v4-dgA" firstAttribute="centerY" secondItem="cbT-F8-4ny" secondAttribute="centerY" id="dJg-bt-eEk"/>
+                            <constraint firstItem="P4W-v4-dgA" firstAttribute="centerX" secondItem="cbT-F8-4ny" secondAttribute="centerX" id="eSd-zS-Cu9"/>
                             <constraint firstItem="j1W-Pn-sk4" firstAttribute="leading" secondItem="9h4-fg-vc3" secondAttribute="leading" constant="20" id="j1b-Ju-rNV"/>
                             <constraint firstItem="9h4-fg-vc3" firstAttribute="bottom" secondItem="j1W-Pn-sk4" secondAttribute="bottom" constant="20" id="lsK-ls-Enr"/>
                             <constraint firstItem="yYg-7H-bAg" firstAttribute="top" secondItem="cbT-F8-4ny" secondAttribute="top" id="pFM-fk-7KI"/>
@@ -107,6 +112,7 @@
                     </view>
                     <connections>
                         <outlet property="collection" destination="yYg-7H-bAg" id="hiZ-uI-JTF"/>
+                        <outlet property="loading" destination="P4W-v4-dgA" id="hze-iF-mUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERC-yo-REh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
