@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa6d49ace8c6809c16de3220c06ff4c4&lat=37.768333&lon=-122.450703&radius=8&format=json&nojsoncallback=1&extras=url_s,url_m,url_l&per_page=10
 class FlickrClient {
     
     enum Endpoints {

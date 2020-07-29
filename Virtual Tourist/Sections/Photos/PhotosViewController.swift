@@ -10,6 +10,8 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     var items: [PhotoInfo] = [PhotoInfo]()
+    var annotation: PinAnnotation!
+    
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     override func viewDidLoad() {
@@ -26,6 +28,33 @@ class PhotosViewController: UIViewController {
         super.viewWillAppear(animated)
         collection.isHidden = true
         loading.isHidden = false
+        fetchphotos()
+    }
+    
+    func fetchphotos() {
+        FlickrClient.fetchPhotos(perPage: 0,
+                            lat: String(describing: annotation.coordinate.latitude),
+                            lon: String(describing: annotation.coordinate.longitude)) { [unowned self] (result) in
+                                switch result {
+                                case .success(let response):
+                                    self.downloadPhotos(photos: response)
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+        }
+    }
+    
+    func downloadPhotos(photos: FetchPhotosResponse) {
+        PhotoDownloader.shared.downloadGroup(placeInfo: photos) { [unowned self] (images) in
+            self.updateView(response: images)
+        }
+    }
+    
+    func updateView(response: FetchPhotosResponse) {
+        collection.isHidden = false
+        loading.isHidden = true
+        items = response.photos
+        collection.reloadData()
     }
     
 }
@@ -46,7 +75,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoViewCell else {
             return UICollectionViewCell()
         }
-//        cell.image.image =
+        cell.image.image = items[indexPath.row].downloadedImage
         cell.text.text = items[indexPath.row].text
         return cell
     }

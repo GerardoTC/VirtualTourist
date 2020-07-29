@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct PhotoInfo: Decodable {
     let text: String
     let id: String
-    let sImageURL: String
-    let mImageURL: String
-    let lImageURL: String
-    
+    let sImageURL: String?
+    let mImageURL: String?
+    let lImageURL: String?
+    var downloadedImage: UIImage?
     enum CodingKeys: String, CodingKey {
         case text = "title"
         case sImageURL = "url_s"

@@ -25,16 +25,10 @@ class MapViewController: UIViewController {
         map.delegate = self
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addPin(longGesture:)))
         map.addGestureRecognizer(longPressGesture)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hidePhotosVC))
+        map.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @IBAction func buttonBarPressed() {
-        if showImages {
-            showPhotosVC()
-        } else {
-            hidePhotosVC()
-        }
-        showImages.toggle()
-    }
     
     @objc func addPin(longGesture: UILongPressGestureRecognizer) {
         let pointPress = longGesture.location(in: map)
@@ -43,12 +37,14 @@ class MapViewController: UIViewController {
         map.addAnnotation(annotation)
     }
     
-    func showPhotosVC() {
+    func showPhotosVC(annotation: PinAnnotation) {
+        (photosViewController as? PhotosViewController)?.annotation = annotation
+        
         self.containerPhotosHeight.constant = self.view.bounds.height * 0.5
         self.photosViewController.view.frame = CGRect(x: 0,
-                                                      y: 0,
-                                                      width: containerCollectionView.frame.width,
-                                                      height: containerCollectionView.frame.height)
+                                                y: 0,
+                                                width: containerCollectionView.frame.width,
+                                                height: containerCollectionView.frame.height)
         self.addChild(photosViewController)
         
         self.containerCollectionView.addSubview(photosViewController.view)
@@ -61,6 +57,7 @@ class MapViewController: UIViewController {
         })
     }
     
+    @objc
     func hidePhotosVC() {
         UIView.animate(withDuration: 0.5, animations: { [unowned self] in
             self.mapHeight.constant = self.view.frame.height
@@ -71,17 +68,18 @@ class MapViewController: UIViewController {
             self.photosViewController.removeFromParent()
         }
     }
+    
+    func focusMap(pin: PinAnnotation) {
+        map.setCenter(pin.coordinate, animated: true)
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
-
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        hidePhotosVC()
-    }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? PinAnnotation else {
             return
         }
-        showPhotosVC()
+        showPhotosVC(annotation: annotation)
+        focusMap(pin: annotation)
     }
 }

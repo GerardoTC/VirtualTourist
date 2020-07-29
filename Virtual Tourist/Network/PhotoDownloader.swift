@@ -22,12 +22,12 @@ class PhotoDownloader {
         }
     }
     
-    func downloadGroup(urls: [URL?], completion: @escaping ([UIImage]) -> Void) {
+    func downloadGroup(placeInfo: FetchPhotosResponse, completion: @escaping (FetchPhotosResponse) -> Void) {
         let dispatchGroup = DispatchGroup.init()
-        var images: [UIImage] = []
-        for url in urls {
+        var images: FetchPhotosResponse = placeInfo
+        for (index, photoInfo) in images.photos.enumerated() {
             dispatchGroup.enter()
-            guard let url = url else {
+            guard let url = URL(string: photoInfo.mImageURL ?? "") else {
                 dispatchGroup.leave()
                 continue
             }
@@ -40,7 +40,7 @@ class PhotoDownloader {
                     dispatchGroup.leave()
                     return
                 }
-                images.append(image)
+                images.photos[index].downloadedImage = image
                 dispatchGroup.leave()
             }
         }

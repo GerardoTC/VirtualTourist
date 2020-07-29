@@ -10,11 +10,13 @@ import Foundation
 
 struct FetchPhotosResponse: Decodable {
     let totalPages: Int
-    let photos: [PhotoInfo]
+    var photos: [PhotoInfo]
+    let currentPage: Int
     
     enum CodingKeys: String, CodingKey {
         case totalPages = "pages"
         case photos = "photo"
+        case currentPage = "page"
     }
 }
 
